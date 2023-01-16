@@ -36,7 +36,7 @@ class Audio2landmark_model():
         self.std_face_id = self.std_face_id.reshape(1, 204)
         self.std_face_id = torch.tensor(self.std_face_id, requires_grad=False, dtype=torch.float).to(device)
 
-        self.eval_data = Audio2landmark_Dataset(dump_dir='examples/dump',
+        self.eval_data = Audio2landmark_Dataset(dump_dir='/content/drive/MyDrive',
                                                 dump_name='random',
                                                 status='val',
                                                num_window_frames=18,
@@ -78,7 +78,7 @@ class Audio2landmark_model():
         self.anchor_t_shape = np.loadtxt('src/dataset/utils/STD_FACE_LANDMARKS.txt')
         self.anchor_t_shape = self.anchor_t_shape[self.t_shape_idx, :]
 
-        with open(os.path.join('examples', 'dump', 'emb.pickle'), 'rb') as fp:
+        with open(os.path.join('/content/drive/MyDrive/emb.pickle'), 'rb') as fp:
             self.test_embs = pickle.load(fp)
 
         print('====================================')
